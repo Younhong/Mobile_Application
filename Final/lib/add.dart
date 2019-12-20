@@ -10,7 +10,6 @@ var imageURL = 'http://handong.edu/site/handong/res/img/logo.png';
 final FirebaseStorage storage = FirebaseStorage(storageBucket: 'gs://final-exam-de688.appspot.com');
 
 class AddPage extends StatefulWidget {
-
   final userID;
   AddPage({Key key, @required this.userID}) : super(key: key);
 
