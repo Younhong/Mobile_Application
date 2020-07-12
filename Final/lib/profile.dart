@@ -28,15 +28,29 @@ class ProfileState extends State <ProfilePage> {
               icon: Icon(Icons.exit_to_app),
               onPressed: () {
                 _signOut();
-                Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage()));}
+                Navigator.push(context, 
+                    MaterialPageRoute(builder: (context) => SignInPage()));}
             )
           ],),
         body: Center(
           child: Column(
             children: <Widget> [
-              Image.network(url, fit: BoxFit.contain, height: 240, width: 700),
-              Container(padding: EdgeInsets.only(top: 20, left: 70, right: 70), child: Text(userID, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),),),
-              Container(padding: EdgeInsets.only(top: 20, left: 20, right: 20), child: Text(email, style: TextStyle(color: Colors.white, fontSize: 20)),),
+              Image.network(url, 
+                  fit: BoxFit.contain, 
+                  height: 240, width: 700),
+              Container(
+                padding: EdgeInsets.only(top: 20, left: 70, right: 70), 
+                child: Text(userID, 
+                  style: TextStyle(
+                      color: Colors.white, 
+                      fontWeight: FontWeight.bold, 
+                      fontSize: 24),),),
+              Container(
+                padding: EdgeInsets.only(top: 20, left: 20, right: 20), 
+                child: Text(email, 
+                    style: TextStyle(
+                        color: Colors.white, 
+                        fontSize: 20)),),
             ],
           ),
         ),

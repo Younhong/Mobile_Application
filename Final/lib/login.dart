@@ -81,12 +81,20 @@ class _AnonymouslySignInSectionState extends State<_AnonymouslySignInSection> {
                   url = 'https://firebasestorage.googleapis.com/v0/b/final-exam-de688.appspot.com/o/empty.png?alt=media&token=3e61e669-7b93-4089-8791-d17d844a67cb';
                 }
               });
-              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(userID: userID, email: email, url: url)));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) =>
+                      HomePage(userID: userID, email: email, url: url)));
             },
             child: Row(
               children: <Widget>[
-                Text('?     ', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
-                Text('Guest', style: TextStyle(color: Colors.white),),
+                Text('?     ',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold)),
+                Text('Guest',
+                  style: TextStyle(
+                      color: Colors.white),),
               ],
             ),
           ),
@@ -138,12 +146,20 @@ class _GoogleSignInSectionState extends State<_GoogleSignInSection> {
                   url = user.photoUrl;
                 }
               });
-              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(userID: userID, email: email, url: url)));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) =>
+                      HomePage(userID: userID, email: email, url: url)));
             },
             child: Row(
               children: <Widget>[
-                Text('G    ', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
-                Text('Google', style: TextStyle(color: Colors.white),),
+                Text('G    ',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold)),
+                Text('Google',
+                  style: TextStyle(
+                      color: Colors.white),),
               ],
             ),
           ),

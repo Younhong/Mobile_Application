@@ -24,7 +24,9 @@ class HomeState extends State<HomePage> {
         leading: IconButton(
           icon: Icon(Icons.person),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(userID: userID, email: email, url: url)));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) =>
+                    ProfilePage(userID: userID, email: email, url: url)));
           },
         ),
         title: Text('Main'),
@@ -32,7 +34,9 @@ class HomeState extends State<HomePage> {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => AddPage(userID: userID)));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) =>
+                      AddPage(userID: userID)));
             },
           ),
         ],
@@ -69,7 +73,10 @@ class HomeState extends State<HomePage> {
   Widget _buildBody(BuildContext context, String dropdownValue) {
       if (dropdownValue == "ASC") {
         return StreamBuilder<QuerySnapshot>(
-          stream: Firestore.instance.collection("ShoppingList").orderBy("price", descending: false).snapshots(),
+          stream: Firestore.instance
+              .collection("ShoppingList")
+              .orderBy("price", descending: false)
+              .snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) return LinearProgressIndicator();
             return _buildList(context, snapshot.data.documents);
@@ -78,7 +85,10 @@ class HomeState extends State<HomePage> {
       }
     else
       return StreamBuilder<QuerySnapshot>(
-        stream: Firestore.instance.collection("ShoppingList").orderBy("price", descending: true).snapshots(),
+        stream: Firestore.instance
+            .collection("ShoppingList")
+            .orderBy("price", descending: true)
+            .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) return LinearProgressIndicator();
           return _buildList(context, snapshot.data.documents);
@@ -114,7 +124,9 @@ class HomeState extends State<HomePage> {
             padding: const EdgeInsets.only(top:10, left: 20),
             child: Text(
               record.name,
-              style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.bold),
               softWrap: true,
             ),),
           Container(
@@ -136,8 +148,13 @@ class HomeState extends State<HomePage> {
             child: Column(
               children: <Widget>[
                 FlatButton(
-                  child: Text('More', style: TextStyle(fontSize: 12, color: Colors.blue),),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(record: record, userID: userID, docID: data.documentID))),
+                  child: Text('More',
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.blue),),
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) =>
+                          DetailPage(record: record, userID: userID, docID: data.documentID))),
                 ),
               ],
             ),

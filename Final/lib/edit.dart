@@ -32,7 +32,10 @@ class EditState extends State<EditPage> {
         appBar: AppBar(
           title: Text(title),
           leading: FlatButton(
-            child: Text('Cancel', style: TextStyle(fontSize: 7, fontWeight: FontWeight.bold),),
+            child: Text('Cancel',
+              style: TextStyle(
+                  fontSize: 7,
+                  fontWeight: FontWeight.bold),),
             onPressed: () {
               _nameController.clear();
               _priceController.clear();
@@ -59,7 +62,9 @@ class EditState extends State<EditPage> {
                     else
                       downloadURL = record.image;
 
-                    record.reference.updateData({"name": _nameController.text, "price": int.parse(_priceController.text), "description": _descriptionController.text,
+                    record.reference.updateData({
+                      "name": _nameController.text, "price": int.parse(_priceController.text),
+                      "description": _descriptionController.text,
                       "modified": currentTime, 'image': downloadURL.toString()});
                     _nameController.clear();
                     _priceController.clear();
@@ -76,13 +81,21 @@ class EditState extends State<EditPage> {
             children: <Widget> [
               Column(
                 children: <Widget>[
-                  (imageFile == null) ? Image.network(record.image, fit: BoxFit.cover, height: 240, width: 700)
-                  : Image.file(imageFile, fit: BoxFit.contain, height: 240, width: 700),
+                  (imageFile == null)
+                      ? Image.network(
+                        record.image,
+                        fit: BoxFit.cover,
+                        height: 240, width: 700)
+                      : Image.file(
+                        imageFile,
+                        fit: BoxFit.contain,
+                        height: 240, width: 700),
                 ],
               ),
               IconButton(
                 padding: EdgeInsets.only(left: 350),
-                icon: Icon(Icons.camera_alt, color: Colors.black,),
+                icon: Icon(Icons.camera_alt,
+                  color: Colors.black,),
                 onPressed: () {
                   chooseFile();
                 },
@@ -99,7 +112,8 @@ class EditState extends State<EditPage> {
                   filled: true,
                   hintText: record.name,
                 ),
-                style: TextStyle(color: Colors.blue),
+                style: TextStyle(
+                    color: Colors.blue),
               ),
               TextFormField(
                 validator: (value) {
@@ -113,7 +127,8 @@ class EditState extends State<EditPage> {
                   filled: true,
                   hintText: '${record.price}',
                 ),
-                style: TextStyle(color: Colors.blue),
+                style: TextStyle(
+                    color: Colors.blue),
               ),
               TextFormField(
                 validator: (value) {
@@ -127,7 +142,8 @@ class EditState extends State<EditPage> {
                   filled: true,
                   hintText: record.description,
                 ),
-                style: TextStyle(color: Colors.blue),
+                style: TextStyle(
+                    color: Colors.blue),
               ),
             ],
           ),
@@ -135,7 +151,8 @@ class EditState extends State<EditPage> {
       ),);}
 
   Future chooseFile() async {
-    File image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.gallery);
 
     setState(() {
       imageFile = image;

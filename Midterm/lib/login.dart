@@ -192,7 +192,3 @@ class SignUpState extends State<SignUp>{
     );
   }
 }
-
-
-
-// TODO: Add AccentColorOverride (103)

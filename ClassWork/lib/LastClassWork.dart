@@ -25,7 +25,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Baby Name Votes')),
+      appBar: AppBar(
+          title: Text('Baby Name Votes')),
       body: _buildBody(context),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
@@ -51,9 +52,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 20,
                     padding: EdgeInsets.only(top: 30, left: 170),
                     child: FlatButton(
-                      child: Text('Auto', style: TextStyle(color: Colors.blue)),
+                      child: Text('Auto',
+                          style: TextStyle(
+                              color: Colors.blue)),
                       onPressed: () {
-                        Firestore.instance.collection("baby").add({"name": myController.text, "votes": 0, "dislike": 0 });
+                        Firestore.instance.collection("baby").add({
+                              "name": myController.text,
+                              "votes": 0,
+                              "dislike": 0 });
                         Navigator.pop(context);
                         myController.clear();
                       }
@@ -91,7 +97,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Padding(
       key: ValueKey(record.name),
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      padding: const EdgeInsets.symmetric(
+          horizontal: 16.0, vertical: 8.0),
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey),
@@ -104,26 +111,41 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Container(
                 width: 30,
-                child: IconButton(icon: Icon(Icons.delete), onPressed: () => record.reference.delete()),
+                child: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () => record.reference.delete()),
               ),
               Container(
                 padding: const EdgeInsets.only(left: 10),
                 width: 140,
-                child: Text(record.name, style: TextStyle(fontSize: 20)),),
+                child: Text(record.name,
+                    style: TextStyle(
+                        fontSize: 20)),),
               Container(
                 padding: const EdgeInsets.only(left: 90),
                 child: Column(
                   children: <Widget>[
-                    IconButton(icon: Icon(Icons.thumb_up, size: 22), onPressed: () => record.reference.updateData({'votes': FieldValue.increment(1)}),),
-                    Text(record.votes.toString(), style: TextStyle(fontSize: 14),),
+                    IconButton(
+                      icon: Icon(Icons.thumb_up,
+                          size: 22),
+                      onPressed: () => record.reference.updateData({
+                        'votes': FieldValue.increment(1)}),),
+                    Text(record.votes.toString(),
+                      style: TextStyle(fontSize: 14),),
                   ],
                 ),
               ),
               Container(
                 child: Column(
                   children: <Widget>[
-                    IconButton(icon: Icon(Icons.thumb_down, size: 22), onPressed: () => record.reference.updateData({'dislike': FieldValue.increment(1)}),),
-                    Text(record.dislike.toString(), style: TextStyle(fontSize: 14),),
+                    IconButton(
+                      icon: Icon(Icons.thumb_down,
+                          size: 22),
+                      onPressed: () => record.reference.updateData({
+                        'dislike': FieldValue.increment(1)}),),
+                    Text(record.dislike.toString(),
+                      style: TextStyle(
+                          fontSize: 14),),
                   ],
                 ),
               ),

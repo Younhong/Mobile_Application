@@ -57,7 +57,9 @@ class HomePage extends StatelessWidget{
                           padding: EdgeInsets.only(top: 30),
                         child: Column(
                           children: <Widget>[
-                            Icon(Icons.location_on, size: 13.5, color: Colors.blue),
+                            Icon(Icons.location_on,
+                                size: 13.5,
+                                color: Colors.blue),
                           ],
                         ),
                       ),],
@@ -70,7 +72,9 @@ class HomePage extends StatelessWidget{
                           child: Row(
                               children: <Widget>[
                                 for (int i = 0; i < product.starNum; i++)
-                                  Icon(Icons.star, size: 11, color:Colors.yellow),
+                                  Icon(Icons.star,
+                                      size: 11,
+                                      color:Colors.yellow),
                               ]
                           ),),
                         Container(
@@ -78,7 +82,9 @@ class HomePage extends StatelessWidget{
                           padding: const EdgeInsets.all(2),
                           child: Text(
                             product.name,
-                            style: TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 10.0,
+                                fontWeight: FontWeight.bold),
                             softWrap: true,
                           ),),
                         Container(
@@ -100,11 +106,15 @@ class HomePage extends StatelessWidget{
                             height: 15,
                             padding: const EdgeInsets.all(2),
                             child: MaterialButton(
-                                child: Text('More', style: TextStyle(fontSize: 8, color: Colors.blue,)),
+                                child: Text('More',
+                                    style: TextStyle(
+                                      fontSize: 8,
+                                      color: Colors.blue,)),
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => DetailPage(product: products[product.id],)),
+                                    MaterialPageRoute(builder: (context) =>
+                                        DetailPage(product: products[product.id],)),
                                   );
                                 }
                             )
@@ -133,8 +143,9 @@ class HomePage extends StatelessWidget{
               semanticLabel: 'search',
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => SearchPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(
+                      builder: (context) => SearchPage()));
             },
           ),
           IconButton(
@@ -159,41 +170,49 @@ class HomePage extends StatelessWidget{
               ),
               child: Container(
                 alignment: Alignment.bottomLeft,
-                child: Text("Pages", style: TextStyle(color: Colors.white, fontSize: 20),
+                child: Text("Pages",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20),
                 ),
               ),
             ),
             ListTile(
               title: Text("Home"),
-              leading: Icon(Icons.home, color: Colors.blue),
+              leading: Icon(Icons.home,
+                  color: Colors.blue),
                 onTap: () {
                   Navigator.pushNamed(context, '/');
                 }
             ),
             ListTile(
                 title: Text("Search"),
-                leading: Icon(Icons.search, color: Colors.blue),
+                leading: Icon(Icons.search,
+                    color: Colors.blue),
                 onTap: () {
                   Navigator.pushNamed(context, '/search');
                 }
             ),
             ListTile(
               title: Text("Favorite Hotel"),
-              leading: Icon(Icons.location_city, color: Colors.blue),
+              leading: Icon(Icons.location_city,
+                  color: Colors.blue),
                 onTap: () {
                   Navigator.pushNamed(context, '/fav');
                 }
             ),
             ListTile(
                 title: Text("Website"),
-                leading: Icon(Icons.language, color: Colors.blue),
+                leading: Icon(Icons.language,
+                    color: Colors.blue),
                 onTap: () {
                   Navigator.pushNamed(context, '/web');
                 }
             ),
             ListTile(
               title: Text("My Page"),
-              leading: Icon(Icons.person, color: Colors.blue),
+              leading: Icon(Icons.person,
+                  color: Colors.blue),
                 onTap: () {
                   Navigator.pushNamed(context, '/my');
                 }
@@ -266,7 +285,9 @@ class DetailState  extends State<DetailPage>{
                 Container(
                   alignment: Alignment.topRight,
                   child: IconButton(
-                    icon: (_saved.contains(product) ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
+                    icon: (_saved.contains(product)
+                        ? Icon(Icons.favorite)
+                        : Icon(Icons.favorite_border)),
                     color: Colors.red,
                     onPressed: _toggleFavorite,
                     )
@@ -286,7 +307,9 @@ class DetailState  extends State<DetailPage>{
                               child: Row(
                                   children: <Widget>[
                                     for (int i = 0; i < product.starNum; i++)
-                                      Icon(Icons.star, size: 11, color:Colors.yellow),
+                                      Icon(Icons.star,
+                                          size: 11,
+                                          color:Colors.yellow),
                                   ])
                           ),
                           Container(
@@ -305,7 +328,9 @@ class DetailState  extends State<DetailPage>{
                             child: Row(
                               children: <Widget>[
                                 Container(
-                                  child: Icon(Icons.location_on, size: 14, color: Colors.blue,),
+                                  child: Icon(Icons.location_on,
+                                    size: 14,
+                                    color: Colors.blue,),
                                 ),
                                 Container(
                                   padding: const EdgeInsets.only(left: 4),
@@ -324,7 +349,9 @@ class DetailState  extends State<DetailPage>{
                             child: Row(
                               children: <Widget>[
                                 Container(
-                                  child: Icon(Icons.phone, size: 14, color: Colors.blue,),
+                                  child: Icon(Icons.phone,
+                                    size: 14,
+                                    color: Colors.blue,),
                                 ),
                                 Container(
                                   padding: const EdgeInsets.only(left: 4),
@@ -394,9 +421,9 @@ class SearchScreen extends State<SearchPage> {
   ];
   // DatePicker
   DateTime _date = DateTime.now();
-  TimeOfDay _time = new TimeOfDay.now();
+  TimeOfDay _time = TimeOfDay.now();
   DateTime _date2 = DateTime.now();
-  TimeOfDay _time2 = new TimeOfDay.now();
+  TimeOfDay _time2 = TimeOfDay.now();
 
   Future<Null> _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
@@ -490,7 +517,10 @@ class SearchScreen extends State<SearchPage> {
                       headerBuilder: (BuildContext context, bool isExpanded) {
                           return ListTile(
                             leading: Text('Location',),
-                            title: Text('Select Location', textAlign: TextAlign.center, style: TextStyle(fontSize: 12),),
+                            title: Text('Select Location',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 12),),
                           );
                       },
                       isExpanded: item.isExpanded,
@@ -503,9 +533,16 @@ class SearchScreen extends State<SearchPage> {
                               children: <Widget>[
                                 Container(
                                   padding: const EdgeInsets.only(left: 140),
-                                  child: Radio(value: 'Seoul', groupValue: _rValue1, activeColor: Colors.blue, onChanged: (value) => setState(() => _rValue1 = value),),
+                                  child: Radio(
+                                    value: 'Seoul',
+                                    groupValue: _rValue1,
+                                    activeColor: Colors.blue,
+                                    onChanged: (value) =>
+                                        setState(() => _rValue1 = value),),
                                 ),
-                                Text('Seoul', style: TextStyle(fontSize: 13,)),
+                                Text('Seoul',
+                                    style: TextStyle(
+                                      fontSize: 13,)),
                               ],
                             ),
                           ),
@@ -516,9 +553,15 @@ class SearchScreen extends State<SearchPage> {
                               children: <Widget>[
                                 Container(
                                   padding: const EdgeInsets.only(left: 140),
-                                  child: Radio(value: 'Busan', groupValue: _rValue1, activeColor: Colors.blue, onChanged: (value) => setState(() => _rValue1 = value),),
+                                  child: Radio(value: 'Busan',
+                                    groupValue: _rValue1,
+                                    activeColor: Colors.blue,
+                                    onChanged: (value) =>
+                                        setState(() => _rValue1 = value),),
                                 ),
-                                Text('Busan', style: TextStyle(fontSize: 13)),
+                                Text('Busan',
+                                    style: TextStyle(
+                                        fontSize: 13)),
                               ],
                             ),
                           ),
@@ -529,9 +572,15 @@ class SearchScreen extends State<SearchPage> {
                               children: <Widget>[
                                 Container(
                                   padding: const EdgeInsets.only(left: 140),
-                                  child: Radio(value: 'Daegu', groupValue: _rValue1, activeColor: Colors.blue, onChanged: (value) => setState(() => _rValue1 = value),),
+                                  child: Radio(
+                                    value: 'Daegu',
+                                    groupValue: _rValue1,
+                                    activeColor: Colors.blue,
+                                    onChanged: (value) =>
+                                        setState(() => _rValue1 = value),),
                                 ),
-                                Text('Daegu', style: TextStyle(fontSize: 13)),
+                                Text('Daegu',
+                                    style: TextStyle(fontSize: 13)),
                                 ],
                               ),
                             ),
@@ -552,7 +601,9 @@ class SearchScreen extends State<SearchPage> {
                       headerBuilder: (BuildContext context, bool isExpanded) {
                         return ListTile(
                           leading: Text('Class'),
-                          title: Text('Select Hotel Classes', textAlign: TextAlign.center, style: TextStyle(fontSize: 12),),
+                          title: Text('Select Hotel Classes',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 12),),
                         );
                       },
                       isExpanded: item.isExpanded,
@@ -562,11 +613,15 @@ class SearchScreen extends State<SearchPage> {
                             padding: const EdgeInsets.only(left: 150),
                             child: Row(
                               children: <Widget>[
-                                Checkbox(value: _cValue1, activeColor: Colors.blue, onChanged: _value1Changed,),
+                                Checkbox(
+                                  value: _cValue1,
+                                  activeColor: Colors.blue,
+                                  onChanged: _value1Changed,),
                                 Row(
                                   children: <Widget>[
                                     for (int i=0; i<1; i++)
-                                      Icon(Icons.star, color: Colors.yellow),
+                                      Icon(Icons.star,
+                                          color: Colors.yellow),
                                   ],
                                 )
                               ],
@@ -576,11 +631,15 @@ class SearchScreen extends State<SearchPage> {
                             padding: const EdgeInsets.only(left: 150),
                             child: Row(
                               children: <Widget>[
-                                Checkbox(value: _cValue2, activeColor: Colors.blue, onChanged: _value2Changed,),
+                                Checkbox(
+                                  value: _cValue2,
+                                  activeColor: Colors.blue,
+                                  onChanged: _value2Changed,),
                                 Row(
                                   children: <Widget>[
                                     for (int i=0; i<2; i++)
-                                      Icon(Icons.star, color: Colors.yellow),
+                                      Icon(Icons.star,
+                                          color: Colors.yellow),
                                   ],
                                 )
                               ],
@@ -590,11 +649,15 @@ class SearchScreen extends State<SearchPage> {
                             padding: const EdgeInsets.only(left: 150),
                             child: Row(
                               children: <Widget>[
-                                Checkbox(value: _cValue3, activeColor: Colors.blue, onChanged: _value3Changed,),
+                                Checkbox(
+                                  value: _cValue3,
+                                  activeColor: Colors.blue,
+                                  onChanged: _value3Changed,),
                                 Row(
                                   children: <Widget>[
                                     for (int i=0; i<3; i++)
-                                      Icon(Icons.star, color: Colors.yellow),
+                                      Icon(Icons.star,
+                                          color: Colors.yellow),
                                   ],
                                 )
                               ],
@@ -604,11 +667,15 @@ class SearchScreen extends State<SearchPage> {
                             padding: const EdgeInsets.only(left: 150),
                             child: Row(
                               children: <Widget>[
-                                Checkbox(value: _cValue4, activeColor: Colors.blue, onChanged: _value4Changed,),
+                                Checkbox(
+                                  value: _cValue4,
+                                  activeColor: Colors.blue,
+                                  onChanged: _value4Changed,),
                                 Row(
                                   children: <Widget>[
                                     for (int i=0; i<4; i++)
-                                      Icon(Icons.star, color: Colors.yellow),
+                                      Icon(Icons.star,
+                                          color: Colors.yellow),
                                   ],
                                 )
                               ],
@@ -618,11 +685,15 @@ class SearchScreen extends State<SearchPage> {
                             padding: const EdgeInsets.only(left: 150),
                             child: Row(
                               children: <Widget>[
-                                Checkbox(value: _cValue5, activeColor: Colors.blue, onChanged: _value5Changed,),
+                                Checkbox(
+                                  value: _cValue5,
+                                  activeColor: Colors.blue,
+                                  onChanged: _value5Changed,),
                                 Row(
                                   children: <Widget>[
                                     for (int i=0; i<5; i++)
-                                      Icon(Icons.star, color: Colors.yellow),
+                                      Icon(Icons.star,
+                                          color: Colors.yellow),
                                     ],
                                   )
                                 ],
@@ -663,7 +734,9 @@ class SearchScreen extends State<SearchPage> {
                                     padding: const EdgeInsets.all(4),
                                     child: Row(
                                       children: <Widget>[
-                                        Text('Check In', style: TextStyle(fontWeight: FontWeight.bold)),
+                                        Text('Check In',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold)),
                                       ],
                                     ),
                                   ),
@@ -671,10 +744,18 @@ class SearchScreen extends State<SearchPage> {
                               ),),
                             Container(
                               width: 80,
-                              child: Text(DateFormat("yyyy-M-dd (EEE)").format(_date), style: TextStyle(fontSize: 9, color: Colors.grey)),
+                              child: Text(
+                                  DateFormat("yyyy-M-dd (EEE)").format(_date),
+                                  style: TextStyle(
+                                      fontSize: 9,
+                                      color: Colors.grey)),
                             ),
                             Container(
-                              child: Text(_time.format(context), style: TextStyle(fontSize: 9, color: Colors.grey)),
+                              child: Text(
+                                  _time.format(context),
+                                  style: TextStyle(
+                                      fontSize: 9,
+                                      color: Colors.grey)),
                             ),
                           ],
                         ),
@@ -685,7 +766,9 @@ class SearchScreen extends State<SearchPage> {
                               child: FlatButton(
                                 color: Colors.blue,
                                 onPressed: () => _selectDate(context),
-                                child: Text('Select Date', style: TextStyle(fontSize: 10),),
+                                child: Text('Select Date',
+                                  style: TextStyle(
+                                      fontSize: 10),),
                               ),
                             ),
                             Container(
@@ -693,7 +776,9 @@ class SearchScreen extends State<SearchPage> {
                                 child: FlatButton(
                                   color: Colors.blue,
                                   onPressed: () => _selectTime(context),
-                                  child: Text('Select Time', style: TextStyle(fontSize: 10),),
+                                  child: Text('Select Time',
+                                    style: TextStyle(
+                                        fontSize: 10),),
                                 ),
                             ),
                           ],
@@ -720,7 +805,9 @@ class SearchScreen extends State<SearchPage> {
                                     padding: const EdgeInsets.all(4),
                                     child: Row(
                                       children: <Widget>[
-                                        Text('Check Out', style: TextStyle(fontWeight: FontWeight.bold)),
+                                        Text('Check Out',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold)),
                                       ],
                                     ),
                                   ),
@@ -728,10 +815,18 @@ class SearchScreen extends State<SearchPage> {
                               ),),
                             Container(
                               width: 80,
-                              child: Text(DateFormat("yyyy-M-dd (EEE)").format(_date2), style: TextStyle(fontSize: 9, color: Colors.grey)),
+                              child: Text(
+                                  DateFormat("yyyy-M-dd (EEE)").format(_date2),
+                                  style: TextStyle(
+                                      fontSize: 9,
+                                      color: Colors.grey)),
                             ),
                             Container(
-                              child: Text(_time2.format(context), style: TextStyle(fontSize: 9, color: Colors.grey)),
+                              child: Text(
+                                  _time2.format(context),
+                                  style: TextStyle(
+                                      fontSize: 9,
+                                      color: Colors.grey)),
                             ),
                           ],
                         ),
@@ -742,7 +837,10 @@ class SearchScreen extends State<SearchPage> {
                               child: FlatButton(
                                 color: Colors.blue,
                                 onPressed: () => _selectDate2(context),
-                                child: Text('Select Date', style: TextStyle(fontSize: 10),),
+                                child: Text(
+                                  'Select Date',
+                                  style: TextStyle(
+                                      fontSize: 10),),
                               ),
                             ),
                             Container(
@@ -750,7 +848,10 @@ class SearchScreen extends State<SearchPage> {
                               child: FlatButton(
                                 color: Colors.blue,
                                 onPressed: () => _selectTime2(context),
-                                child: Text('Select Time', style: TextStyle(fontSize: 10),),
+                                child: Text(
+                                  'Select Time',
+                                  style: TextStyle(
+                                      fontSize: 10),),
                               ),
                             ),
                           ],
@@ -777,7 +878,9 @@ class SearchScreen extends State<SearchPage> {
                     children: <Widget>[
                       Container(
                           padding: const EdgeInsets.only(left:8, right: 8, bottom: 8),
-                        child: Slider(value: _sValue, onChanged: _setValue)),
+                        child: Slider(
+                            value: _sValue,
+                            onChanged: _setValue)),
                     ],
                 ),
                 Container(
@@ -785,173 +888,204 @@ class SearchScreen extends State<SearchPage> {
                   child: FlatButton(
                     color: Colors.blue,
                     child: Text('Search'),
-                    onPressed: () {  return showDialog<void>(
-                      context: context,
-                      barrierDismissible: false, // user must tap button!
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Container(
-                            child: Text('Please Check Your Choice',),
-                          ),
-                          content: SingleChildScrollView(
-                            child: ListBody(
-                              children: <Widget>[
-                                Container(
-                                  padding: const EdgeInsets.all(2),
-                                  child: Row(
-                                      children: <Widget>[
-                                        Container(
-                                          padding: const EdgeInsets.all(2),
-                                          child: Icon(Icons.location_on, color: Colors.blue,),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.all(2),
-                                          child: Text('$_rValue1'),
-                                        ),
-                                      ]
-                                  ),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.all(2),
-                                  child: Row(
-                                      children: <Widget>[
-                                        Container(
-                                          padding: const EdgeInsets.all(2),
-                                          child: Icon(Icons.star, color: Colors.yellow,),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.all(2),
-                                          child: Row(
-                                            children: <Widget> [
-                                              if (_cValue1)
-                                                Row(
-                                                  children: <Widget>[
-                                                    Icon(Icons.star, color: Colors.yellow, size: 13),
-                                                    if (_cValue2 || _cValue3 || _cValue4 || _cValue5)
-                                                      Row(
-                                                        children: <Widget>[
-                                                          Text('/'),
-                                                        ],
-                                                      ),
-                                                  ],
-                                                ),
-                                              if (_cValue2)
-                                                Row(
-                                                  children: <Widget>[
-                                                    for (int i=0; i<2; i++)
-                                                      Icon(Icons.star, color: Colors.yellow, size: 13),
-                                                    if (_cValue3 || _cValue4 || _cValue5)
-                                                      Row(
-                                                        children: <Widget>[
-                                                          Text('/'),
-                                                        ],
-                                                      ),
-                                                  ],
-                                                ),
-                                              if (_cValue3)
-                                                Row(
-                                                  children: <Widget>[
-                                                    for (int i=0; i<3; i++)
-                                                      Icon(Icons.star, color: Colors.yellow, size: 13),
-                                                    if (_cValue4 || _cValue5)
-                                                      Row(
-                                                        children: <Widget>[
-                                                          Text('/'),
-                                                        ],
-                                                      ),
-                                                  ],
-                                                ),
-                                              if (_cValue4)
-                                                Row(
-                                                  children: <Widget>[
-                                                    for (int i=0; i<4; i++)
-                                                      Icon(Icons.star, color: Colors.yellow, size: 13),
-                                                    if (_cValue5)
-                                                      Row(
-                                                        children: <Widget>[
-                                                          Text('/'),
-                                                        ],
-                                                      ),
-                                                  ],
-                                                ),
-                                              if (_cValue5)
-                                                Row(
-                                                  children: <Widget>[
-                                                    for (int i=0; i<5; i++)
-                                                      Icon(Icons.star, color: Colors.yellow, size: 13),
-                                                  ],
-                                                ),
-                                            ]
-                                          )
-                                        )
-                                      ]
-                                  ),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.all(2),
-                                  child: Row(
-                                      children: <Widget>[
-                                        Column(
-                                          children: <Widget>[
-                                            Container(
-                                              padding: const EdgeInsets.all(2),
-                                              child: Icon(Icons.date_range, color: Colors.blue,),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          children: <Widget>[
-                                            Container(
-                                              child: Text('In', style: TextStyle(fontSize: 9)),
-                                            ),
-                                            Container(
-                                              child: Text('Out', style: TextStyle(fontSize: 9)),
-                                            )
-                                          ],
-                                        ),
-                                        Column(
-                                          children: <Widget>[
-                                            Container(
-                                              padding: const EdgeInsets.only(left: 8),
-                                              child: Text(DateFormat("yyyy-M-dd (EEE)").format(_date), style: TextStyle(fontSize: 9)),
-                                            ),
-                                            Container(
-                                              padding: const EdgeInsets.only(left: 8),
-                                              child: Text(DateFormat("yyyy-M-dd (EEE)").format(_date2), style: TextStyle(fontSize: 9)),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          children: <Widget>[
-                                            Container(
-                                              padding: const EdgeInsets.only(left: 8),
-                                              child: Text(_time.format(context), style: TextStyle(fontSize: 9)),
-                                            ),
-                                            Container(
-                                              padding: const EdgeInsets.only(left: 8),
-                                              child: Text(_time2.format(context), style: TextStyle(fontSize: 9)),
-                                            ),
-                                          ],
-                                        )
-                                      ]
-                                  ),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.all(2),
-                                  child: Row(
-                                      children: <Widget>[
-                                        Container(
-                                          padding: const EdgeInsets.all(2),
-                                          child: Icon(Icons.attach_money, color: Colors.blue,),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.all(2),
-                                          child: Text('${(_sValue*150).round()}'),
-                                        ),
-                                      ]
+                    onPressed: () {
+                      return showDialog<void>(
+                        context: context,
+                        barrierDismissible: false, // user must tap button!
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Container(
+                              child: Text('Please Check Your Choice',),
+                            ),
+                            content: SingleChildScrollView(
+                              child: ListBody(
+                                children: <Widget>[
+                                  Container(
+                                    padding: const EdgeInsets.all(2),
+                                    child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            padding: const EdgeInsets.all(2),
+                                            child: Icon(Icons.location_on,
+                                              color: Colors.blue,),
+                                          ),
+                                          Container(
+                                            padding: const EdgeInsets.all(2),
+                                            child: Text('$_rValue1'),
+                                          ),
+                                        ]
                                     ),
                                   ),
-                                ],
+                                  Container(
+                                    padding: const EdgeInsets.all(2),
+                                    child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            padding: const EdgeInsets.all(2),
+                                            child: Icon(Icons.star,
+                                              color: Colors.yellow,),
+                                          ),
+                                          Container(
+                                            padding: const EdgeInsets.all(2),
+                                            child: Row(
+                                              children: <Widget> [
+                                                if (_cValue1)
+                                                  Row(
+                                                    children: <Widget>[
+                                                      Icon(Icons.star,
+                                                          color: Colors.yellow,
+                                                          size: 13),
+                                                      if (_cValue2 || _cValue3 || _cValue4 || _cValue5)
+                                                        Row(
+                                                          children: <Widget>[
+                                                            Text('/'),
+                                                          ],
+                                                        ),
+                                                    ],
+                                                  ),
+                                                if (_cValue2)
+                                                  Row(
+                                                    children: <Widget>[
+                                                      for (int i=0; i<2; i++)
+                                                        Icon(Icons.star,
+                                                            color: Colors.yellow,
+                                                            size: 13),
+                                                      if (_cValue3 || _cValue4 || _cValue5)
+                                                        Row(
+                                                          children: <Widget>[
+                                                            Text('/'),
+                                                          ],
+                                                        ),
+                                                    ],
+                                                  ),
+                                                if (_cValue3)
+                                                  Row(
+                                                    children: <Widget>[
+                                                      for (int i=0; i<3; i++)
+                                                        Icon(Icons.star,
+                                                            color: Colors.yellow,
+                                                            size: 13),
+                                                      if (_cValue4 || _cValue5)
+                                                        Row(
+                                                          children: <Widget>[
+                                                            Text('/'),
+                                                          ],
+                                                        ),
+                                                    ],
+                                                  ),
+                                                if (_cValue4)
+                                                  Row(
+                                                    children: <Widget>[
+                                                      for (int i=0; i<4; i++)
+                                                        Icon(Icons.star,
+                                                            color: Colors.yellow,
+                                                            size: 13),
+                                                      if (_cValue5)
+                                                        Row(
+                                                          children: <Widget>[
+                                                            Text('/'),
+                                                          ],
+                                                        ),
+                                                    ],
+                                                  ),
+                                                if (_cValue5)
+                                                  Row(
+                                                    children: <Widget>[
+                                                      for (int i=0; i<5; i++)
+                                                        Icon(Icons.star,
+                                                            color: Colors.yellow,
+                                                            size: 13),
+                                                    ],
+                                                  ),
+                                              ]
+                                            )
+                                          )
+                                        ]
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.all(2),
+                                    child: Row(
+                                        children: <Widget>[
+                                          Column(
+                                            children: <Widget>[
+                                              Container(
+                                                padding: const EdgeInsets.all(2),
+                                                child: Icon(Icons.date_range,
+                                                  color: Colors.blue,),
+                                              ),
+                                            ],
+                                          ),
+                                          Column(
+                                            children: <Widget>[
+                                              Container(
+                                                child: Text('In',
+                                                    style: TextStyle(
+                                                        fontSize: 9)),
+                                              ),
+                                              Container(
+                                                child: Text('Out',
+                                                    style: TextStyle(
+                                                        fontSize: 9)),
+                                              )
+                                            ],
+                                          ),
+                                          Column(
+                                            children: <Widget>[
+                                              Container(
+                                                padding: const EdgeInsets.only(left: 8),
+                                                child: Text(
+                                                    DateFormat("yyyy-M-dd (EEE)").format(_date),
+                                                    style: TextStyle(
+                                                        fontSize: 9)),
+                                              ),
+                                              Container(
+                                                padding: const EdgeInsets.only(left: 8),
+                                                child: Text(
+                                                    DateFormat("yyyy-M-dd (EEE)").format(_date2),
+                                                    style: TextStyle(
+                                                        fontSize: 9)),
+                                              ),
+                                            ],
+                                          ),
+                                          Column(
+                                            children: <Widget>[
+                                              Container(
+                                                padding: const EdgeInsets.only(left: 8),
+                                                child: Text(
+                                                    _time.format(context),
+                                                    style: TextStyle(
+                                                        fontSize: 9)),
+                                              ),
+                                              Container(
+                                                padding: const EdgeInsets.only(left: 8),
+                                                child: Text(
+                                                    _time2.format(context),
+                                                    style: TextStyle(
+                                                        fontSize: 9)),
+                                              ),
+                                            ],
+                                          )
+                                        ]
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.all(2),
+                                    child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            padding: const EdgeInsets.all(2),
+                                            child: Icon(Icons.attach_money,
+                                              color: Colors.blue,),
+                                          ),
+                                          Container(
+                                            padding: const EdgeInsets.all(2),
+                                            child: Text('${(_sValue*150).round()}'),
+                                          ),
+                                        ]
+                                      ),
+                                    ),
+                                  ],
                               ),
                             ),
                           );
@@ -1004,8 +1138,10 @@ class FavoriteHotelState extends State<FavoritePage> {
                 });
               },
               // Show a red background as the item is swiped away.
-              background: Container(color: Colors.red),
-              child: ListTile(title: Text(item.name)),
+              background: Container(
+                  color: Colors.red),
+              child: ListTile(
+                  title: Text(item.name)),
             );
           },
         ),
@@ -1085,7 +1221,10 @@ class MyPage extends StatelessWidget {
                                     margin: EdgeInsets.symmetric(horizontal: 5.0),
                                     child: Text(
                                         _saved[i].name,
-                                        style: TextStyle(fontWeight: FontWeight.bold,  fontSize: 13, color: Colors.orange,)
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 13,
+                                          color: Colors.orange,)
                                     ),
                                   ),
                                 ]
@@ -1109,7 +1248,9 @@ Route _createRoute(int a) {
       var begin = Offset(0.0, 1.0);
       var end = Offset.zero;
       var curve = Curves.ease;
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var tween = Tween(begin: begin, end: end).chain(
+          CurveTween(
+              curve: curve));
       return SlideTransition(
         position: animation.drive(tween),
         child: child,

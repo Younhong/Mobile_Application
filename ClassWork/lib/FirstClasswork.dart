@@ -24,7 +24,9 @@ class RandomWordsState extends State<RandomWords> {
         title: Text('21400022 YounhongKo'),
         backgroundColor: Colors.blue.shade100,
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
+          IconButton(
+              icon: Icon(Icons.list),
+              onPressed: _pushSaved),
         ]
       ),
       body: _buildSuggestions(),

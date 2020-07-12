@@ -26,7 +26,8 @@ class FirstRoute extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SecondRoute()),
+                    MaterialPageRoute(
+                        builder: (context) => SecondRoute()),
                   );
                 }
             ),

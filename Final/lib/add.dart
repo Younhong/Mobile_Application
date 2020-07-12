@@ -35,7 +35,10 @@ class AddState extends State<AddPage> {
         appBar: AppBar(
           title: Text(title),
           leading: FlatButton(
-            child: Text('Cancel', style: TextStyle(fontSize: 7, fontWeight: FontWeight.bold),),
+            child: Text('Cancel', 
+              style: TextStyle(
+                  fontSize: 7, 
+                  fontWeight: FontWeight.bold),),
             onPressed: () {
               _nameController.clear();
               _priceController.clear();
@@ -60,8 +63,11 @@ class AddState extends State<AddPage> {
                 }
 
                 if (_formKey.currentState.validate()) {
-                  Firestore.instance.collection("ShoppingList").add({"name": _nameController.text, "price": int.parse(_priceController.text), "description": _descriptionController.text, "like": 0,
-                    'uid': userID, 'created': currentTime, 'modified': currentTime, 'favorite': FieldValue.arrayUnion([]), 'image': imageURL.toString()});
+                  Firestore.instance.collection("ShoppingList").add({
+                    "name": _nameController.text, 
+                    "price": int.parse(_priceController.text), "description": _descriptionController.text, "like": 0,
+                    'uid': userID, 'created': currentTime, 'modified': currentTime, 
+                    'favorite': FieldValue.arrayUnion([]), 'image': imageURL.toString()});
                   _nameController.clear();
                   _priceController.clear();
                   _descriptionController.clear();
@@ -78,13 +84,19 @@ class AddState extends State<AddPage> {
             children: <Widget> [
               Column(
                 children: <Widget>[
-                  (imageFile == null) ? Image.network('https://firebasestorage.googleapis.com/v0/b/final-exam-de688.appspot.com/o/empty.png?alt=media&token=3e61e669-7b93-4089-8791-d17d844a67cb', fit: BoxFit.cover, height: 240, width: 700)
-                      : Image.file(imageFile, fit: BoxFit.contain, height: 240, width: 700),
+                  (imageFile == null) 
+                      ? Image.network('https://firebasestorage.googleapis.com/v0/b/final-exam-de688.appspot.com/o/empty.png?alt=media&token=3e61e669-7b93-4089-8791-d17d844a67cb', 
+                        fit: BoxFit.cover, 
+                        height: 240, width: 700)
+                      : Image.file(imageFile, 
+                        fit: BoxFit.contain, 
+                        height: 240, width: 700),
                 ],
               ),
               IconButton(
                   padding: EdgeInsets.only(left: 350),
-                  icon: Icon(Icons.camera_alt, color: Colors.black,),
+                  icon: Icon(Icons.camera_alt, 
+                    color: Colors.black,),
                   onPressed: () {
                     chooseFile();
                   },
@@ -101,7 +113,8 @@ class AddState extends State<AddPage> {
                   filled: true,
                   labelText: 'Product Name',
                 ),
-                style: TextStyle(color: Colors.blue),
+                style: TextStyle(
+                    color: Colors.blue),
               ),
               TextFormField(
                 validator: (value) {
@@ -115,7 +128,8 @@ class AddState extends State<AddPage> {
                   filled: true,
                   labelText: 'Price',
                 ),
-                style: TextStyle(color: Colors.blue),
+                style: TextStyle(
+                    color: Colors.blue),
               ),
               TextFormField(
                 validator: (value) {

@@ -34,7 +34,9 @@ class DetailState extends State<DetailPage> {
               icon: Icon(Icons.edit),
               onPressed: () {
                 if (record.uid == this.userID)
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => EditPage(record: record)));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) =>
+                          EditPage(record: record)));
               }
             ),
             IconButton(
@@ -55,7 +57,8 @@ class SnackBarPage extends StatefulWidget {
   final Record record;
   final userID;
   final docID;
-  SnackBarPage({Key key, @required this.record, @required this.userID, @required this.docID}) : super(key: key);
+  SnackBarPage({Key key, @required this.record, @required this.userID, @required this.docID})
+      : super(key: key);
 
   SnackBarState createState() => SnackBarState(record, userID, docID);
 }
@@ -76,7 +79,10 @@ class SnackBarState extends State<SnackBarPage>{
   Widget _buildBody(BuildContext context) {
     String docID = widget.docID;
     return StreamBuilder<DocumentSnapshot>(
-      stream: Firestore.instance.collection('ShoppingList').document(docID).snapshots(),
+      stream: Firestore.instance
+          .collection('ShoppingList')
+          .document(docID)
+          .snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return LinearProgressIndicator();
 
@@ -90,7 +96,10 @@ class SnackBarState extends State<SnackBarPage>{
     return ListView(
       children: [
         Container(
-          child: Image.network(record.image, fit: BoxFit.contain, height: 240),
+          child: Image.network(
+              record.image,
+              fit: BoxFit.contain,
+              height: 240),
         ),
         Container(
           padding: const EdgeInsets.all(20),
@@ -119,7 +128,8 @@ class SnackBarState extends State<SnackBarPage>{
                           children: <Widget>[
                             IconButton(
                               icon: Icon(Icons.thumb_up),
-                              color: (record.favorite.contains(userID) ? Colors.red : Colors.grey),
+                              color: (record.favorite.contains(userID)
+                                  ? Colors.red : Colors.grey),
                               onPressed: () {
                                 setState(() {
                                   if (record.favorite.contains(userID)) {
@@ -129,8 +139,10 @@ class SnackBarState extends State<SnackBarPage>{
                                     Scaffold.of(context).showSnackBar(snackBar);
                                   }
                                   else {
-                                    record.reference.updateData({'like': FieldValue.increment(1)});
-                                    record.reference.updateData({'favorite': FieldValue.arrayUnion([userID])});
+                                    record.reference.updateData({
+                                      'like': FieldValue.increment(1)});
+                                    record.reference.updateData({
+                                      'favorite': FieldValue.arrayUnion([userID])});
                                     final snackBar = SnackBar(
                                       content: Text('I like it!'),
                                     );
@@ -150,7 +162,10 @@ class SnackBarState extends State<SnackBarPage>{
                         children: <Widget>[
                           Container(
                             padding: const EdgeInsets.only(left: 4),
-                            child: Text('${record.price}', style: TextStyle( color: Colors.blue, fontSize: 14,),
+                            child: Text('${record.price}',
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 14,),
                             ),),
                         ],
                       ),
@@ -167,14 +182,19 @@ class SnackBarState extends State<SnackBarPage>{
           child: Text(
             record.description,
             softWrap: true,
-            style: TextStyle( color: Colors.blue, fontSize: 15),
+            style: TextStyle(
+                color: Colors.blue,
+                fontSize: 15),
           ),
         ),
         Column(
           children: <Widget>[
-            Container(child: Text('Creator: ${record.uid}'),),
-            Container(child: Text('Created at: ${record.created.toDate()}'),),
-            Container(child: Text('Modified at: ${record.modified.toDate()}'),),
+            Container(
+              child: Text('Creator: ${record.uid}'),),
+            Container(
+              child: Text('Created at: ${record.created.toDate()}'),),
+            Container(
+              child: Text('Modified at: ${record.modified.toDate()}'),),
           ],
         ),
       ],

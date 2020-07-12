@@ -38,39 +38,41 @@ class ChatScreen extends StatefulWidget {
 
 class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   final List<ChatMessage> _messages = <ChatMessage>[];
-  final TextEditingController _textController = new TextEditingController();
+  final TextEditingController _textController = TextEditingController();
   bool _isComposing = false;
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Friendlychat"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Friendlychat"),
         elevation:
-        Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
+        Theme.of(context).platform == TargetPlatform.iOS
+            ? 0.0 : 4.0,
       ),
-      body: new Container(
-          child: new Column(
+      body: Container(
+          child: Column(
             children: <Widget>[
-              new Flexible(
-                child: new ListView.builder(
-                  padding: new EdgeInsets.all(8.0),
+              Flexible(
+                child: ListView.builder(
+                  padding: EdgeInsets.all(8.0),
                   reverse: true,
                   itemBuilder: (_, int index) => _messages[index],
                   itemCount: _messages.length,
                 ),
               ),
-              new Divider(height: 1.0),
-              new Container(
-                decoration: new BoxDecoration(
+              Divider(height: 1.0),
+              Container(
+                decoration: BoxDecoration(
                     color: Theme.of(context).cardColor),
                 child: _buildTextComposer(),
               ),
             ],
           ),
           decoration: Theme.of(context).platform == TargetPlatform.iOS
-              ? new BoxDecoration(
-            border: new Border(
-              top: new BorderSide(color: Colors.grey[200]),
+              ? BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                  color: Colors.grey[200]),
             ),
           )
               : null),
@@ -82,10 +84,10 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     setState((){
       _isComposing = false;
     });
-    ChatMessage message = new ChatMessage(
+    ChatMessage message = ChatMessage(
       text: text,
-      animationController: new AnimationController(
-        duration: new Duration(milliseconds: 3000),
+      animationController: AnimationController(
+        duration: Duration(milliseconds: 3000),
         vsync: this,
       ),
     );
@@ -96,14 +98,15 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   }
 
   Widget _buildTextComposer() {
-    return new IconTheme(
-      data: new IconThemeData(color: Theme.of(context).accentColor),
-      child: new Container(
+    return IconTheme(
+      data: IconThemeData(
+          color: Theme.of(context).accentColor),
+      child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: new Row(
+        child: Row(
           children: <Widget>[
-            new Flexible(
-              child: new TextField(
+            Flexible(
+              child: TextField(
                 controller: _textController,
                 onChanged: (String text) {
                   setState(() {
@@ -111,20 +114,24 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                   });
                 },
                 onSubmitted: _handleSubmitted,
-                decoration: new InputDecoration.collapsed(
+                decoration: InputDecoration.collapsed(
                     hintText: "Send a message"),
               ),
             ),
-            new Container(
-              margin: new EdgeInsets.symmetric(horizontal: 4.0),
-              child: Theme.of(context).platform == TargetPlatform.iOS ?
-              new CupertinoButton(
-                child: _isComposing ? Icon(Icons.directions_run, color: Colors.orange) : Icon(Icons.directions_walk),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 4.0),
+              child: Theme.of(context).platform == TargetPlatform.iOS
+                  ? CupertinoButton(
+                child: _isComposing
+                    ? Icon(Icons.directions_run, color: Colors.orange)
+                    : Icon(Icons.directions_walk),
                 onPressed: _isComposing
                     ? () =>  _handleSubmitted(_textController.text)
                     : null,) :
-              new IconButton(
-                icon: _isComposing ? Icon(Icons.directions_run, color: Colors.orange) : Icon(Icons.directions_walk),
+              IconButton(
+                icon: _isComposing
+                    ? Icon(Icons.directions_run, color: Colors.orange)
+                    : Icon(Icons.directions_walk),
                 onPressed: _isComposing
                     ? () => _handleSubmitted(_textController.text)
                     : null,
@@ -148,30 +155,35 @@ class ChatMessage extends StatelessWidget {
   final AnimationController animationController;
   @override
   Widget build(BuildContext context) {
-    return new SizeTransition(
-        sizeFactor: new CurvedAnimation(
-            parent: animationController, curve: Curves.easeOut),
+    return SizeTransition(
+        sizeFactor: CurvedAnimation(
+            parent: animationController,
+            curve: Curves.easeOut),
         axisAlignment: 0.0,
-        child: new Container(
+        child: Container(
           margin: const EdgeInsets.symmetric(vertical: 10.0),
-          child: new Row(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              new Expanded(
-                child: new Column(
+              Expanded(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    new Text(_name, style: Theme.of(context).textTheme.subhead),
-                    new Container(
+                    Text(_name,
+                        style: Theme.of(context).textTheme.subhead),
+                    Container(
                       margin: const EdgeInsets.only(top: 5.0),
-                      child: new Text(text),
+                      child: Text(text),
                     ),
                   ],
                 ),
               ),
-              new Container(
+              Container(
                 margin: const EdgeInsets.only(right: 16.0),
-                child: new CircleAvatar(child: new Text(_name[0]), foregroundColor: Colors.grey, backgroundColor: Colors.orangeAccent[100],),
+                child: CircleAvatar(
+                  child: Text(_name[0]),
+                  foregroundColor: Colors.grey,
+                  backgroundColor: Colors.orangeAccent[100],),
               ),
             ],
           ),
